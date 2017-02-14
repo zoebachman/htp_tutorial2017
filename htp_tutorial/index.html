@@ -11,55 +11,19 @@
     <script src="sketch.js" type="text/javascript"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
-// function convertUnixTimeCallback(result){
-//     console.log(result);
-// }
-
-// function outsideText(result){
-//   console.log(result)
-//       fill("#32CD32");
-//     stroke(2);
-//   textSize(20);
-//   text(weatherData.name)//, -40, 0)
-//   text(weatherData.weather[0].main)//, -40, 30)
-//   text(weatherData.weather[0].description)//, -40, 50)
-//   text(temp)//, -40, 80)
-  
-// }
-
-
-
 $(function(){
     var baseUri = 'http://www.convert-unix-time.com/api?';
     $.getScript(baseUri+'timestamp=now&returnType=jsonp&callback=convertUnixTimeCallback');
 });
 
-// $(function(){
-//     //var baseUri = 'http://www.convert-unix-time.com/api?';
-//     $.getScript('outsideText()');
-// });
+
 </script>
 
     <style> body {
-    /*padding: 20; */
-    /*margin: 20;*/
     font-family: "arial";
     font-style: italic;
     } canvas {vertical-align: top;} </style>
   </head>
   <body>
-    <!--<p>-->
-    <!--  City: <input id="zip" value="11222">-->
-      <!--<br>-->
-    <!--  <button id="submit">submit</button>-->
-      <!--<br>-->
-    <!--  <button id="refresh">refresh</button>-->
-    <!--</p>-->
-    <p id='demo'>
-      
-    </p>
-    <script>
-    //   document.getElementById("demo").innerHTML = weatherData.name;
-    </script>
   </body>
 </html>
