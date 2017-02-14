@@ -1,10 +1,12 @@
 var input;
 var button;
+var zipData;
 
 //construct url
 var url = "http://api.openweathermap.org/data/2.5/weather?zip=";
 //var url = "http://api.openweathermap.org/data/2.5/find?q=";
-//var zip = "11222" // eventually: input.value();
+//var zip = "11222" // eventually: input.value(); //or randomly select from a list of zipcodes?
+
 var countryCode = ",us";
 var metric = "&units=metric";
 var API = "&appid=2585c2354e7209577fbcb9a5ad1c9367";
@@ -19,37 +21,57 @@ var sunrise;
 var weatherData;
 var humidity;
 
+var zip;
+var parsedZip;
+
 
 function setup() {
   createCanvas(400, 400);
 
-  button = select("#submit");
-  button.mousePressed(weatherAsk);
-  input = select('#zip')
+  // button = select("#submit");
+  // button.mousePressed(weatherAsk);
+  //input = select('#zip')
+  loadJSON('zip_codes.json', getData, 'jasonp');
+  
+  // var call = url + parsedZip + metric + API;
+ 
+  
 
-  refreshButton = select("#refresh")
-  refreshButton.mousePressed(resetSketch)
+  // refreshButton = select("#refresh")
+  // refreshButton.mousePressed(resetSketch)
 }
 
-function weatherAsk() {
-  var call = url + input.value() + metric + API;
-  loadJSON(call, gotData, 'jsonp');
+function getData(data){
+  //console.log(data)
+  zipData = data;
+  zip = random(zipData);
+  parsedZip = parseFloat(zip);
+  console.log(parsedZip)
+  var call = url + parsedZip + metric + API;
+   console.log(call)
+   loadJSON(call, gotData, 'jsonp');
 }
 
-function resetSketch() {
-  background("white")
-}
+// function weatherAsk() {
+//   // var call = url + input.value() + metric + API;
+//   var call = url + zip + metric + API;
+//   loadJSON(call, gotData, 'jsonp');
+// }
+
+// function resetSketch() {
+//   background("white")
+// }
 
 function convertUnixTimeCallback(result) {
   time = result.timestamp;
-  console.log(result.timestamp);
+  //console.log(result.timestamp);
 }
 
 function gotData(data) {
 
   weatherData = data;
   
-  console.log(weatherData.sys.sunset);
+  //console.log(weatherData.sys.sunset);
   sunset = weatherData.sys.sunset;
   sunrise = weatherData.sys.sunset;
   
@@ -80,7 +102,7 @@ function gotData(data) {
   
   for (var x = 0; x <= width + 500; x += density) {
     for (var y = 10; y <= height + 500; y += density) {
-      rotate((PI / temp));
+      rotate((PI/temp));
       rect(x, y, 5, 500)
     }
   }
