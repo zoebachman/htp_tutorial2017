@@ -10,13 +10,19 @@ This p5.js sketch is a weather visualizer that uses data pulled from the openwea
 3. Random zip version (uses an extra list of zip codes and randomly chooses one each time it’s refreshed)
 
 ## Sources:
-To make this sketch, I relied on the [p5.js reference page](http://p5js.org/reference/), Dan Shiffman’s [coding train videos](https://www.youtube.com/user/shiffman) - great introduction/refresher to working with data in various forms like API and JSON.
+[open weather data](http://openweathermap.org/) and get your API key.
 
-I also looked at example code from my [Introduction to Computational Media class] (https://github.com/ITPNYU/ICM-2015/) at NYU-ITP.
+[p5.js reference page](http://p5js.org/reference/)
 
-…I specifically looked at [this sketch](https://github.com/ITPNYU/ICM-2015/blob/master/03_interaction/for_loops5/sketch.js) when looking for inspiration  
- 
-To do the tutorial, sign up for an account with [open weather data](http://openweathermap.org/) and get your API key.
+Dan Shiffman’s [coding train videos](https://www.youtube.com/user/shiffman) - great introduction/refresher to working with data in various forms.
+
+Other useful p5.js example code lives at the NYU ITP [Introduction to Computational Media class] (https://github.com/ITPNYU/ICM-2015/) repo. 
+
+…I specifically looked at [this sketch](https://github.com/ITPNYU/ICM-2015/blob/master/03_interaction/for_loops5/sketch.js) for inspiration.
+
+enjoi <3 <3 <3
+
+
 
 
 
