@@ -10,9 +10,9 @@ This p5.js sketch is a weather visualizer that uses data pulled from the openwea
 3. Random zip version (uses an extra list of zip codes and randomly chooses one each time it’s refreshed)
 
 ## Sources:
-[open weather data](http://openweathermap.org/) and get your API key.
-
 [p5.js reference page](http://p5js.org/reference/)
+
+[open weather data](http://openweathermap.org/) to get your API key.
 
 Dan Shiffman’s [coding train videos](https://www.youtube.com/user/shiffman) - great introduction/refresher to working with data in various forms.
 
