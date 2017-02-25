@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>weather_sketch2</title>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+
+    <script src="sketch.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+$(function(){
+    var baseUri = 'http://www.convert-unix-time.com/api?';
+    $.getScript(baseUri+'timestamp=now&returnType=jsonp&callback=convertUnixTimeCallback');
+});
+
+
+</script>
+    <style> body {
+    font-family: "arial";
+    font-style: italic;
+    } canvas {vertical-align: top;} </style>
+  </head>
+  <body>
+  </body>
+</html>
