@@ -10,10 +10,6 @@ var API = "&appid=2585c2354e7209577fbcb9a5ad1c9367";
 var unixTime = 'http://www.convert-unix-time.com/api?timestamp=now'
 var timeData;
 var time;
-var sunset;
-var sunrise;
-var weatherData;
-var humidity;
 
 
 function setup() {
@@ -43,10 +39,10 @@ function convertUnixTimeCallback(result) {
 
 function gotData(data) {
 
-  weatherData = data;
+  var weatherData = data;
+  var sunrise = weatherData.sys.sunrise;
+  var sunset = weatherData.sys.sunset;
 
-  sunset = weatherData.sys.sunset;
-  sunrise = weatherData.sys.sunset;
   
   //convert sunset into real time, see if it is between certain times for it to be light or dark
   var humidityColor = weatherData.main.humidity;

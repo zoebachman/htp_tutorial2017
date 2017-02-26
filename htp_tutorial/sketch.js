@@ -1,95 +1,67 @@
 //construct url
+// http://api.openweathermap.org/data/2.5/weather?zip=11222,us&units=metric&appid=2585c2354e7209577fbcb9a5ad1c9367
 var url = "http://api.openweathermap.org/data/2.5/weather?zip=";
-//var url = "http://api.openweathermap.org/data/2.5/find?q=";
-var zip = "11222" // eventually: input.value(); //or randomly select from a list of zipcodes
+var zip = "19081"
 var countryCode = ",us";
 var metric = "&units=metric";
 var API = "&appid=2585c2354e7209577fbcb9a5ad1c9367";
 
 
-// http://api.openweathermap.org/data/2.5/weather?zip=11222,us&units=metric&appid=2585c2354e7209577fbcb9a5ad1c9367
-
-//"http://api.openweathermap.org/data/2.5/find?q=London&units=metric&appid=2585c2354e7209577fbcb9a5ad1c9367
-
-var unixTime = 'http://www.convert-unix-time.com/api?timestamp=now'
-var timeData;
-var time;
-var sunset;
-var sunrise;
-var weatherData;
-var humidity;
-
 function setup() {
   createCanvas(400, 400);
   var call = url + zip + metric + API;
-   console.log(call)
-   loadJSON(call, gotData, 'jsonp');
-}
-
-function convertUnixTimeCallback(result) {
-  time = result.timestamp;
-
+  console.log(call)
+  loadJSON(call, gotData, 'jsonp');
 }
 
 function gotData(data) {
 
-  weatherData = data;
-  
-  //console.log(weatherData.sys.sunset);
-  sunset = weatherData.sys.sunset;
-  sunrise = weatherData.sys.sunrise;
-  
-  //convert sunset into real time, see if it is between certain times for it to be light or dark
-  //console.log(weatherData.main.humidity)
-  var humidityColor = weatherData.main.humidity;
+  var weatherData = data;
 
-  if (sunrise < time || time < sunset) {
-    //it's day
-    background(humidityColor, 195, 255, humidityColor);
-  } else {
-    //it's night
-    background(humidityColor, 10, 10);
-  }
+  //use humidity data to generate background color
+  var humidityColor = weatherData.main.humidity;
+  background(humidityColor, 195, 255, humidityColor);
+
 
   push()
-    //first, map temp values
-    //temp will be rays
   var temp = weatherData.main.temp; //yellow color
-  var density = map(temp, 0, height, 20, 50); //
-  translate(width / 2, height / 2); //lines drawn from center
-  if(temp < 0){
+
+  //how temp will affect color of rays
+   //change alpha of color depending on the temp (cold = transparent, hot = fill)
+  if (temp < 0) {
     fill(255, 255, temp, temp);
-  }else{
-    fill(255, 255, temp, temp*20);
+  } else {
+    fill(255, 255, temp, temp * 20);
   }
+
+  var mappedTemp = map(temp, -10, 30, 40, 0); //map it so that values are within a specific range, doesn't get too dense
+  translate(width / 2, height / 2); //lines drawn from center
   
-  for (var x = 0; x <= width + 500; x += density) {
-    for (var y = 10; y <= height + 500; y += density) {
-      rotate((PI/temp));
+  for (var x = 0; x <= width; x += mappedTemp) { //controls spiral definition
+    for (var y = 0; y <= height; y += mappedTemp) { //controls spacing between the rectangles
+      rotate((PI / mappedTemp));
       rect(x, y, 5, 500)
+      //ellipse(x,y,5,500)
     }
   }
   pop()
-  
-  if (weatherData.weather[0].main == "Clouds" || weatherData.weather[0].main == "Rain"){
-    fill(0,0,0,100)
+
+  //if it's cloudy or rainy, place a grey rectangle on top to dim color
+  if (weatherData.weather[0].main == "Clouds" || weatherData.weather[0].main == "Rain") {
+    fill(0, 0, 0, 100)
     rect(0, 0, 400, 400)
-  } else{
+  } else {
     noFill();
-    // rect(0, 0, 400, 400)
   }
-  
+
   //text description
-  // console.log(weatherData.weather[0].main);
- noStroke();
-  fill(0,0,0,100)
+  noStroke();
+  fill(0, 0, 0, 100)
   rect(0, 360, 400, 40)
   fill("#32CD32");
-  //fill("white");
   stroke(50);
   textSize(20);
   text(weatherData.name, 10, 390)
   text(weatherData.weather[0].main, 180, 390)
-  //text(weatherData.weather[0].description, 250, 380)
   text(temp, 300, 390)
 }
