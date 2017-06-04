@@ -15,7 +15,7 @@ This p5.js sketch is a weather visualizer that uses data pulled from the openwea
 
 Dan Shiffman’s [coding train videos](https://www.youtube.com/user/shiffman) - great introduction/refresher to working with data in various forms.
 
-Other useful p5.js example code lives at the NYU ITP [Introduction to Computational Media class] (https://github.com/ITPNYU/ICM-2015/) repo. 
+Other useful p5.js example code lives at the NYU ITP [Introduction to Computational Media class](https://github.com/ITPNYU/ICM-2015/) repo. 
 
 …I specifically looked at [this sketch](https://github.com/ITPNYU/ICM-2015/blob/master/03_interaction/for_loops5/sketch.js) for inspiration.
 
