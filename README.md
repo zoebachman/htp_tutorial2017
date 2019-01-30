@@ -1,4 +1,4 @@
-# htp_tutorial2017
+# HTP Tutorial 2017 - Generative Weather App
 Repo for [HTP Tutorial](http://www.hackthepatriarchybaltimore.com/), Spring 2017
 
 This p5.js sketch is a weather visualizer that uses data pulled from the openweatherAPI.  I like how working with changing data can effect a sketch (see the beautiful [wind map] (http://hint.fm/wind/) visualization). There’s a basic version with two variations so you can play around with the interface, making use of the DOM or separate data files.
